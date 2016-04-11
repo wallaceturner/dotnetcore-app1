@@ -6,13 +6,17 @@ using Microsoft.AspNetCore.Mvc;
 namespace SampleApp.Controllers
 {
     [Route("[controller]")]
-	public class OrdersController
+	public class FilesController
     {
         [HttpGet("{id}")]
-        public string Index(int id)
+        public FileResult Index(int id)
         {            
-            throw new System.Exception("foo");
-			return $"OrdersController {id}" ;
+            return new FileResult { Field1=$"Hello from {id}" };
         }
     }
+	
+	public class FileResult
+	{
+		public string Field1 { get; set; }
+	}
 }

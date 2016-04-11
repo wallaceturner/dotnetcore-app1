@@ -39,14 +39,18 @@ namespace SampleApp
 
             app.UseKestrelConnectionLogging();
             app.UseStaticFiles();
-            app.UseMvc();
+			app.UseDeveloperExceptionPage();
+            app.UseStatusCodePages();
+            app.UseMvcWithDefaultRoute();
+			// app.UseWelcomePage();
+			
             //app.UseStaticFiles(new StaticFileOptions()
             //{
             //    FileProvider = new PhysicalFileProvider(@"D:\aaa_development\Spikes\dotnetcli\cli\TestAssets\TestProjects\PortableTests\StandaloneApp\StaticFiles"),
             //    RequestPath = new PathString("/StaticFiles")
             //});
 
-            app.UseDeveloperExceptionPage();
+            
 
             //app.Run(async context =>
             //{
