@@ -32,20 +32,25 @@ namespace SampleApp
 
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory, IApplicationEnvironment env, IHostingEnvironment host)
         {
-            Console.WriteLine("webroot: " + host.WebRootPath);
             var baseDirectory = AppContext.BaseDirectory;
-            Console.WriteLine("webroot: " + baseDirectory);
+            Console.WriteLine("ApplicationBasePath: " + PlatformServices.Default.Application.ApplicationBasePath);
             var ksi = app.ServerFeatures.Get<IKestrelServerInformation>();
             ksi.NoDelay = true;
 
             loggerFactory.AddConsole(LogLevel.Error);
 
             app.UseKestrelConnectionLogging();
-            app.UseStaticFiles();
-            app.UseDirectoryBrowser(new DirectoryBrowserOptions()
+            //app.UseStaticFiles();
+            //app.UseDirectoryBrowser(new DirectoryBrowserOptions()
+            //{
+            //    FileProvider = new PhysicalFileProvider(Path.Combine(baseDirectory, @"..\..\..\..\StaticFiles")),
+            //    RequestPath = new PathString("/StaticFiles")
+            //});
+            app.UseFileServer(new FileServerOptions()
             {
                 FileProvider = new PhysicalFileProvider(Path.Combine(baseDirectory, @"..\..\..\..\StaticFiles")),
-                RequestPath = new PathString("/StaticFiles")
+                RequestPath = new PathString("/StaticFiles"),
+                EnableDirectoryBrowsing = true
             });
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
@@ -62,7 +67,7 @@ namespace SampleApp
             // }
 
             // var url = new Uri(args[0]);
-			var url = "http://localhost:5004";
+			var url = "http://*:5004";
             Args = string.Join(" ", args);
 
             var host = new WebHostBuilder()
