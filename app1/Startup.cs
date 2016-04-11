@@ -33,6 +33,8 @@ namespace SampleApp
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory, IApplicationEnvironment env, IHostingEnvironment host)
         {
             Console.WriteLine("webroot: " + host.WebRootPath);
+            var baseDirectory = AppContext.BaseDirectory;
+            Console.WriteLine("webroot: " + baseDirectory);
             var ksi = app.ServerFeatures.Get<IKestrelServerInformation>();
             ksi.NoDelay = true;
 
@@ -42,44 +44,13 @@ namespace SampleApp
             app.UseStaticFiles();
             app.UseDirectoryBrowser(new DirectoryBrowserOptions()
             {
-                FileProvider = new PhysicalFileProvider(@"D:\aaa_development\Spikes\StandaloneApp\app1\StaticFiles"),
+                FileProvider = new PhysicalFileProvider(Path.Combine(baseDirectory, @"..\..\..\..\StaticFiles")),
                 RequestPath = new PathString("/StaticFiles")
             });
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseMvcWithDefaultRoute();
 			// app.UseWelcomePage();
-			
-            //app.UseStaticFiles(new StaticFileOptions()
-            //{
-            //    FileProvider = new PhysicalFileProvider(@"D:\aaa_development\Spikes\dotnetcli\cli\TestAssets\TestProjects\PortableTests\StandaloneApp\StaticFiles"),
-            //    RequestPath = new PathString("/StaticFiles")
-            //});
-
-            
-
-            //app.Run(async context =>
-            //{
-            //    Console.WriteLine("{0} {1}{2}{3}",
-            //        context.Request.Method,
-            //        context.Request.PathBase,
-            //        context.Request.Path,
-            //        context.Request.QueryString);
-            //    Console.WriteLine($"Method: {context.Request.Method}");
-            //    Console.WriteLine($"PathBase: {context.Request.PathBase}");
-            //    Console.WriteLine($"Path: {context.Request.Path}");
-            //    Console.WriteLine($"QueryString: {context.Request.QueryString}");
-
-            //    var connectionFeature = context.Connection;
-            //    Console.WriteLine($"Peer: {connectionFeature.RemoteIpAddress?.ToString()} {connectionFeature.RemotePort}");
-            //    Console.WriteLine($"Sock: {connectionFeature.LocalIpAddress?.ToString()} {connectionFeature.LocalPort}");
-            //    string s = null;
-            //    var foo = s.ToString();
-            //    var content = $"Hello world!{Environment.NewLine}Received '{Args}' from command line.";
-            //    context.Response.ContentLength = content.Length;
-            //    context.Response.ContentType = "text/plain";
-            //    await context.Response.WriteAsync(content);
-            //});
         }
 
         public static int Main(string[] args)
