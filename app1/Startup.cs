@@ -27,6 +27,7 @@ namespace SampleApp
         {
            services.AddMvcCore()
                    .AddJsonFormatters();
+            services.AddDirectoryBrowser();
         }
 
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory, IApplicationEnvironment env, IHostingEnvironment host)
@@ -39,7 +40,12 @@ namespace SampleApp
 
             app.UseKestrelConnectionLogging();
             app.UseStaticFiles();
-			app.UseDeveloperExceptionPage();
+            app.UseDirectoryBrowser(new DirectoryBrowserOptions()
+            {
+                FileProvider = new PhysicalFileProvider(@"D:\aaa_development\Spikes\StandaloneApp\app1\StaticFiles"),
+                RequestPath = new PathString("/StaticFiles")
+            });
+            app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseMvcWithDefaultRoute();
 			// app.UseWelcomePage();

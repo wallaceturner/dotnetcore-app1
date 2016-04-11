@@ -1,3 +1,4 @@
 app1/obj/*
 app1/bin/Debug/*
 app1/project.lock.json
+app1/StandaloneApp.xproj.user
