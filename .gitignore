@@ -2,3 +2,9 @@ app1/obj/*
 app1/bin/Debug/*
 app1/project.lock.json
 app1/StandaloneApp.xproj.user
+src/web/bin/*
+src/web/obj/*
+project.lock.json
+src/model/obj/*
+src/model/bin/*
+.vs/*
