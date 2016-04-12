@@ -8,3 +8,4 @@ project.lock.json
 src/model/obj/*
 src/model/bin/*
 .vs/*
+src/web/StaticFiles/0e3f4f1.jpg

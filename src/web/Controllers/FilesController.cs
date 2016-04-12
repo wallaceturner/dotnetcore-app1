@@ -12,7 +12,7 @@ namespace SampleApp.Controllers
         [HttpGet("{id}")]
         public SampleApp.Model.FileResult Index(int id)
         {            
-            return new SampleApp.Model.FileResult { Field1=$"Hello from {id}" };
+            return new SampleApp.Model.FileResult { Field1=$"Hello from {id}", Field2="bar" };
         }
     }
 	

@@ -32,7 +32,7 @@ namespace SampleApp
 
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory, IApplicationEnvironment env, IHostingEnvironment host)
         {
-            var baseDirectory = AppContext.BaseDirectory;
+            var baseDirectory = PlatformServices.Default.Application.ApplicationBasePath;
             Console.WriteLine("ApplicationBasePath: " + PlatformServices.Default.Application.ApplicationBasePath);
             var ksi = app.ServerFeatures.Get<IKestrelServerInformation>();
             ksi.NoDelay = true;
@@ -40,7 +40,7 @@ namespace SampleApp
             loggerFactory.AddConsole(LogLevel.Error);
 
             app.UseKestrelConnectionLogging();
-            //app.UseStaticFiles();
+            app.UseStaticFiles();
             //app.UseDirectoryBrowser(new DirectoryBrowserOptions()
             //{
             //    FileProvider = new PhysicalFileProvider(Path.Combine(baseDirectory, @"..\..\..\..\StaticFiles")),
