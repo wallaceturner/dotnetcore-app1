@@ -1,7 +1,0 @@
-{
-   "webroot": "wwwroot",
-   "server" : "Microsoft.AspNet.Server.Kestrel",
-   "app": "MyProjectName",
-   "environment": "Development",
-   "detailedErrors": true
-}
