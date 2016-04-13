@@ -52,7 +52,11 @@ namespace SampleApp
                 RequestPath = new PathString("/StaticFiles"),
                 EnableDirectoryBrowsing = true
             });
-            app.UseDeveloperExceptionPage();
+            if (host.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+                
             app.UseStatusCodePages();
             app.UseMvcWithDefaultRoute();
 			// app.UseWelcomePage();
