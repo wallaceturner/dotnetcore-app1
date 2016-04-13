@@ -32,7 +32,7 @@ namespace SampleApp
 
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory, IApplicationEnvironment env, IHostingEnvironment host)
         {
-            var baseDirectory = PlatformServices.Default.Application.ApplicationBasePath;
+            var baseDirectory = AppContext.BaseDirectory;
             Console.WriteLine("ApplicationBasePath: " + PlatformServices.Default.Application.ApplicationBasePath);
             var ksi = app.ServerFeatures.Get<IKestrelServerInformation>();
             ksi.NoDelay = true;
@@ -48,7 +48,7 @@ namespace SampleApp
             //});
             app.UseFileServer(new FileServerOptions()
             {
-                FileProvider = new PhysicalFileProvider(Path.Combine(baseDirectory, @"..\..\..\..\StaticFiles")),
+                FileProvider = new PhysicalFileProvider(Path.Combine(baseDirectory, @"..\..\..\StaticFiles")),
                 RequestPath = new PathString("/StaticFiles"),
                 EnableDirectoryBrowsing = true
             });

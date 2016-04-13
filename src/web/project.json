@@ -1,6 +1,7 @@
 {
   "compilationOptions": {
-    "emitEntryPoint": true
+    "emitEntryPoint": true,
+    "debugType": "portable"
   },
   "dependencies": {
     "model": "1.0.0.*",
@@ -11,12 +12,19 @@
     "Microsoft.AspNetCore.StaticFiles": "1.0.0-*",
     "Microsoft.AspNetCore.Mvc": "1.0.0-*",
     "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.0-*",
-    "System.Runtime.Serialization.Primitives": "4.1.1-*",
-    "Microsoft.NETCore.Platforms": "1.0.1-*",
-    "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-*"
+    "System.Runtime.Serialization.Primitives": "4.1.1-*",    
+    "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-*",
+    "Microsoft.NETCore.App": {
+      "type": "platform",
+      "version": "1.0.0-rc2-23931"
+    }
   },
   "frameworks": {
-    "net451": { }
+    "netcoreapp1.0": {
+      "imports": [
+        "portable-net45+wp80+win8+wpa81+dnxcore50"
+      ]
+    }
   },
   "runtimes": {
     "win7-x64": { }
