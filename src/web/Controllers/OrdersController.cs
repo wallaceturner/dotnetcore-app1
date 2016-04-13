@@ -12,7 +12,7 @@ namespace SampleApp.Controllers
         public string Index(int id)
         {            
             throw new System.Exception("foo");
-			return $"OrdersController {id}" ;
+			//return $"OrdersController {id}" ;
         }
     }
 }

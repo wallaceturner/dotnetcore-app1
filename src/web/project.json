@@ -11,8 +11,7 @@
     "Microsoft.AspNetCore.StaticFiles": "1.0.0-*",
     "Microsoft.AspNetCore.Mvc": "1.0.0-*",
     "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.0-*",
-    "System.Runtime.Serialization.Primitives": "4.1.1-*",
-
+    "System.Runtime.Serialization.Primitives": "4.1.1-*",    
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-*",
     "Microsoft.NETCore.App": {
       "type": "platform",
@@ -26,9 +25,7 @@
       ]
     }
   },
-  "runtimes": {
-    "win7-x64": { }
-  },
+  
   "content": [
     "wwwroot/**/*"
   ]

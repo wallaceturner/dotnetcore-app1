@@ -27,7 +27,7 @@ namespace SampleApp
         {
            services.AddMvcCore()
                    .AddJsonFormatters();
-            services.AddDirectoryBrowser();
+            services.AddDirectoryBrowser();           
         }
 
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory, IApplicationEnvironment env, IHostingEnvironment host)
@@ -58,7 +58,7 @@ namespace SampleApp
             }
                 
             app.UseStatusCodePages();
-            app.UseMvcWithDefaultRoute();
+            app.UseMvcWithDefaultRoute();            
 			// app.UseWelcomePage();
         }
 
