@@ -34,12 +34,12 @@ namespace SampleApp
         {
             var baseDirectory = AppContext.BaseDirectory;
             Console.WriteLine("ApplicationBasePath: " + PlatformServices.Default.Application.ApplicationBasePath);
-            var ksi = app.ServerFeatures.Get<IKestrelServerInformation>();
-            ksi.NoDelay = true;
+            // var ksi = app.ServerFeatures.Get<IKestrelServerInformation>();
+            // ksi.NoDelay = true;
 
             loggerFactory.AddConsole(LogLevel.Error);
 
-            app.UseKestrelConnectionLogging();
+            //app.UseKestrelConnectionLogging();
             app.UseStaticFiles();
             //app.UseDirectoryBrowser(new DirectoryBrowserOptions()
             //{
